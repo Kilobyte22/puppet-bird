@@ -1,0 +1,11 @@
+<%- |
+  $protocol,
+  $import,
+  $table
+| -%>
+protocol static {
+  <%= $protocol %> {
+    import <%= $import %>;
+    export none;
+    table <%= $table %>;
+  };

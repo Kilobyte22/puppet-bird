@@ -1,0 +1,10 @@
+<%- |
+  String $iface,
+  Boolean $stub,
+| -%>
+    interface "<%= $iface %>" {
+      <%- if $stub { -%>
+      stub;
+      <%- } -%>
+    };
+

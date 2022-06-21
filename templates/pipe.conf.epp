@@ -1,0 +1,15 @@
+<%- |
+  String $export,
+  String $import,
+  String $local_table,
+  String $peer_table,
+| -%>
+# This file is managed by puppet
+# !! DO NOT EDIT MANUALLY  !!
+
+protocol pipe {
+  export <%= $export %>;
+  import <%= $import %>;
+  table <%= $local_table %>;
+  peer table <%= $peer_table %>;
+}

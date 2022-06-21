@@ -1,0 +1,19 @@
+<%- |
+  String $export,
+  String $import,
+  Enum['ipv4', 'ipv6'] $protocol,
+  String $table = 'master4',
+  Integer $kernel_table = 254,
+| -%>
+# This file is managed by puppet
+# !! DO NOT EDIT MANUALLY  !!
+
+protocol kernel {
+  <%= $protocol %> {
+    export <%= $export %>;
+    import <%= $export %>;
+    table <%= $table %>;
+  };
+
+  kernel table <%= $kernel_table %>;
+}

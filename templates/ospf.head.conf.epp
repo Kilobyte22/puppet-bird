@@ -1,0 +1,12 @@
+<%- |
+  String $id,
+  Enum['ipv4', 'ipv6'] $ip_version,
+  String $import,
+  String $export,
+| -%>
+protocol ospf <%= $id %> {
+  <%= $ip_version %> {
+    import <%= $import %>;
+    export <%= $export %>;
+  };
+

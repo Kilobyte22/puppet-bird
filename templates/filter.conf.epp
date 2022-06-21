@@ -1,0 +1,10 @@
+<%- |
+  String $name,
+  String $code,
+| -%>
+# This file is managed by puppet
+# !! DO NOT EDIT MANUALLY  !!
+
+filter <%= $name %> {
+<%= $code %>
+}

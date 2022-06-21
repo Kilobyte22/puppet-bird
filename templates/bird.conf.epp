@@ -1,0 +1,19 @@
+<%- |
+  $router_id,
+| -%>
+# This file is managed by puppet
+# !! DO NOT EDIT MANUALLY  !!
+
+# Configure logging
+log syslog all;
+# log "/var/log/bird.log" { debug, trace, info, remote, warning, error, auth, fatal, bug };
+
+# debug protocols { filters };
+
+router id <%= $router_id %>;
+
+protocol device {
+    scan time 10;
+}
+
+include "conf.d/*.conf";

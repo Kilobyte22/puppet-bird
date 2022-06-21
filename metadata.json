@@ -1,0 +1,25 @@
+{
+    "name": "kilobyte22-bird",
+    "version": "0.1.0",
+    "author": "kilobyte22",
+    "license": "MIT",
+    "summary": "Manages the BIRD2 Routing Daemon",
+    "source": "https://github.com/Kilobyte22/puppet-bird2",
+    "issues_url": "https://github.com/Kilobyte22/puppet-bird2/issues",
+    "operatingsystem_support": [
+        {
+            "operatingsystem": "Debian",
+            "operatingsystemrelease": ["11"]
+        }
+    ],
+    "dependencies": [
+        {
+            "name": "puppetlabs-stdlib",
+            "version_requirement": ">= 8.0.0 < 9.0.0"
+        },
+        {
+            "name": "puppetlabs-concat",
+            "version_requirement": ">= 7.0.0 < 8.0.0"
+        }
+    ]
+}
