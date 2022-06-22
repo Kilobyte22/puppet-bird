@@ -40,7 +40,7 @@ define bird::static::route (
     concat::fragment { "bird_static_${static}_route_${title}_2":
       order   => '50',
       target  => "/etc/bird/conf.d/40_static_${static}.conf",
-      content => ';',
+      content => '  ;',
     }
   }
 }
