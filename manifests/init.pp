@@ -11,6 +11,10 @@ class bird (
     notify => Service['bird'],
   }
 
+  file { '/etc/bird':
+    ensure => directory,
+  }
+
   file { '/etc/bird/bird.conf':
     ensure  => present,
     content => epp(
