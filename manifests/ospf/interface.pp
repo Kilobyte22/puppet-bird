@@ -3,7 +3,8 @@ define bird::ospf::interface (
   $area,
   String $instance,
   String $interface = $title,
-  Boolean $stub = false
+  Boolean $stub = false,
+  Array[String] $neighbours = [],
 ) {
   # bird_ospf_${title}_1${area}_${interface}
   concat::fragment {"bird_ospf_${instance}_1${area}_1${interface}":
@@ -12,8 +13,9 @@ define bird::ospf::interface (
     content => epp(
       'bird/ospf.interface.conf.epp',
       {
-        iface => $interface,
-        stub  => $stub,
+        iface      => $interface,
+        stub       => $stub,
+        neighbours => $neighbours,
       }
     )
   }

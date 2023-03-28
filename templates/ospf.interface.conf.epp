@@ -1,10 +1,18 @@
 <%- |
   String $iface,
   Boolean $stub,
+  Array[String] $neighbours,
 | -%>
     interface "<%= $iface %>" {
       <%- if $stub { -%>
       stub;
       <%- } -%>
+      <% unless $peers.empty { %>
+      neighbors {
+        <% $neighbours.each |$neigh| { %>
+        <%= $neigh %>,
+        <% } %>
+      };
+      <% } %>
     };
 
