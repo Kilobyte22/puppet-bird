@@ -15,7 +15,13 @@ class bird (
     ensure => directory,
   }
 
-  file { '/etc/bird/bird.conf':
+  $bird_main_config = $facts['os']['family'] ? {
+    'Debian'    => '/etc/bird/bird.conf',
+    'Archlinux' => '/etc/bird.conf',
+    default     => fail("Unknown Distribution Family: ${facts['os']['family']}"),
+  }
+
+  file { $bird_main_config:
     ensure  => present,
     content => epp(
       'bird/bird.conf.epp',
