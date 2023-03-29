@@ -5,7 +5,7 @@
   String $export,
   Enum['v2', 'v3'] $ospf_version,
 | -%>
-protocol <%= $ospf_version %> ospf <%= $id %> {
+protocol ospf <%= $ospf_version %> <%= $id %> {
   <%= $ip_version %> {
     import <%= $import %>;
     export <%= $export %>;
