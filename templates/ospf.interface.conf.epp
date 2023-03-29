@@ -10,7 +10,7 @@
       <% unless $neighbours.empty { %>
       neighbors {
         <% $neighbours.each |$neigh| { %>
-        <%= $neigh %>,
+        <%= $neigh %>;
         <% } %>
       };
       <% } %>
