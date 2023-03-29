@@ -3,8 +3,9 @@
   Enum['ipv4', 'ipv6'] $ip_version,
   String $import,
   String $export,
+  Enum['v2', 'v3'] $ospf_version,
 | -%>
-protocol ospf <%= $id %> {
+protocol <%= $ospf_version %> ospf <%= $id %> {
   <%= $ip_version %> {
     import <%= $import %>;
     export <%= $export %>;

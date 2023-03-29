@@ -1,6 +1,7 @@
 # Configures an OSPF protocol
 define bird::ospf (
   Enum['ipv4', 'ipv6'] $protocol,
+  Optional[Enum['v2', 'v3']] $ospf_version = undef,
   String $export_filter = 'all',
   String $import_filter = 'all',
 ) {
@@ -15,16 +16,25 @@ define bird::ospf (
     order  => '00',
   }
 
+  $use_ospf_version = $ospf_version ? {
+    undef => $protocol ? {
+      'ipv4' => 'v2',
+      'ipv6' => 'v3',
+    },
+    default => $ospf_version,
+  }
+
   concat::fragment { "bird_ospf_${title}_head":
     target  => "/etc/bird/conf.d/40_ospf_${title}.conf",
     order   => '01',
     content => epp(
       'bird/ospf.head.conf.epp',
       {
-        id         => $title,
-        ip_version => $protocol,
-        import     => $import_filter,
-        export     => $export_filter,
+        id           => $title,
+        ip_version   => $protocol,
+        import       => $import_filter,
+        export       => $export_filter,
+        ospf_version => $use_ospf_version,
       }
     ),
   }
