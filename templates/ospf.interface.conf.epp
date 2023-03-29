@@ -7,7 +7,7 @@
       <%- if $stub { -%>
       stub;
       <%- } -%>
-      <% unless $peers.empty { %>
+      <% unless $neighbours.empty { %>
       neighbors {
         <% $neighbours.each |$neigh| { %>
         <%= $neigh %>,
