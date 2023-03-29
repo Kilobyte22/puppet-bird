@@ -2,7 +2,7 @@
 define bird::static (
   Enum['ipv4', 'ipv6'] $protocol,
   String $import = 'all',
-  String $table = undef,
+  Optional[String] $table = undef,
 ) {
   $act_table = $table ? {
     undef   => $protocol ? {
