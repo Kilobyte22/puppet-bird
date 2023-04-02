@@ -2,10 +2,14 @@
   String $iface,
   Boolean $stub,
   Array[String] $neighbours,
+  Optional[String] $type,
 | -%>
     interface "<%= $iface %>" {
       <%- if $stub { -%>
       stub;
+      <%- } -%>
+      <%- if $type { -%>
+      type <%= $type %>;
       <%- } -%>
       <% unless $neighbours.empty { %>
       neighbors {
