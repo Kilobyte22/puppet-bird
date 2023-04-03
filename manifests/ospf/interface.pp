@@ -6,6 +6,7 @@ define bird::ospf::interface (
   Boolean $stub = false,
   Array[String] $neighbours = [],
   Optional[Enum['bcast', 'ptp', 'nbma', 'ptmp']] $type = undef,
+  Optional[String] $password = undef,
 ) {
   # bird_ospf_${title}_1${area}_${interface}
   concat::fragment {"bird_ospf_${instance}_1${area}_1${interface}":
@@ -18,6 +19,7 @@ define bird::ospf::interface (
         stub       => $stub,
         neighbours => $neighbours,
         type       => $type,
+        password   => $password,
       }
     )
   }

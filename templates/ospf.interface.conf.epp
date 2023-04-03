@@ -3,6 +3,7 @@
   Boolean $stub,
   Array[String] $neighbours,
   Optional[String] $type,
+  Optional[String] $password,
 | -%>
     interface "<%= $iface %>" {
       <%- if $stub { -%>
@@ -10,6 +11,10 @@
       <%- } -%>
       <%- if $type { -%>
       type <%= $type %>;
+      <%- } -%>
+      <%- if $password { -%>
+      authentication cryptographic;
+      password "<%= $password %>";
       <%- } -%>
       <% unless $neighbours.empty { %>
       neighbors {
