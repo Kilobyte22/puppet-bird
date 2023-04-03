@@ -9,7 +9,7 @@ define bird::ospf::interface (
   Optional[String] $password = undef,
 ) {
   # bird_ospf_${title}_1${area}_${interface}
-  concat::fragment {"bird_ospf_${instance}_1${area}_1${interface}":
+  concat::fragment {"bird_ospf_${instance}_1${area}_2${interface}":
     target  => "/etc/bird/conf.d/40_ospf_${instance}.conf",
     order   => '50',
     content => epp(

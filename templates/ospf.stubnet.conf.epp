@@ -1,0 +1,17 @@
+<%- |
+  Stdlib::IP::Address $prefix,
+  Boolean $hidden,
+  Boolean $summary,
+  Optional[Integer] $cost,
+| -%>
+    stubnet <%= $prefix %> {
+      <%- if $hidden { -%>
+      hidden;
+      <%- } -%>
+      <%- if $summary { -%>
+      summary;
+      <%- } -%>
+      <%- if $cost { -%>
+      cost <%= $cost %>;
+      <%- } -%>
+    };

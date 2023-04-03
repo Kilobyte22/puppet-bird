@@ -10,7 +10,7 @@ define bird::ospf::area (
     content => epp('bird/ospf.area.conf.epp', { area => $id })
   }
 
-  concat::fragment {"bird_ospf_${instance}_1${id}_2":
+  concat::fragment {"bird_ospf_${instance}_1${id}_9":
     target  => "/etc/bird/conf.d/40_ospf_${instance}.conf",
     order   => '50',
     content => '  };'
