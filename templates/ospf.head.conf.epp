@@ -4,10 +4,12 @@
   String $import,
   String $export,
   Enum['v2', 'v3'] $ospf_version,
+  String $table,
 | -%>
 protocol ospf <%= $ospf_version %> <%= $id %> {
   <%= $ip_version %> {
     import <%= $import %>;
     export <%= $export %>;
+    table <%= $table %>;
   };
 

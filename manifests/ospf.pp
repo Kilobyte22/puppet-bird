@@ -4,7 +4,17 @@ define bird::ospf (
   Optional[Enum['v2', 'v3']] $ospf_version = undef,
   String $export_filter = 'all',
   String $import_filter = 'all',
+  Optional[String] $table = undef,
 ) {
+
+  $act_table = $table ? {
+    undef   => $protocol ? {
+      'ipv4' => 'master4',
+      'ipv6' => 'master6',
+    },
+    default => $table,
+  }
+
   concat { "/etc/bird/conf.d/40_ospf_${title}.conf":
     ensure_newline => true,
     notify         => Service['bird'],
@@ -35,6 +45,7 @@ define bird::ospf (
         import       => $import_filter,
         export       => $export_filter,
         ospf_version => $use_ospf_version,
+        table        => $act_table,
       }
     ),
   }
