@@ -5,7 +5,7 @@ define bird::bgp (
   Optional[String] $interface = undef,
   Variant[Boolean, Enum['graceful']] $bfd = false,
   Optional[Stdlib::IP::Address::Nosubnet] $local_addr = undef,
-  Optional[Sensitive] $password = undef,
+  Optional[Variant[Sensitive, String]] $password = undef,
   Optional[Struct[{export => String, import => String, table => Optional[String]}]] $ipv4 = undef,
   Optional[Struct[{export => String, import => String, table => Optional[String]}]] $ipv6 = undef,
   Optional[Enum['direct', 'multihop']] $kind = undef,

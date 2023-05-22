@@ -7,6 +7,9 @@ protocol bgp <%= $name %> {
   <% if $interface { %>
     interface "<%= $interface %>";
   <% } %>
+  <% if $password { %>
+    password "<%= $password %>";
+  <% } %>
   <% if $ipv4 { %>
     ipv4 {
       import <%= $ipv4['import'] %>;
