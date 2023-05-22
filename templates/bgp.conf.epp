@@ -1,0 +1,28 @@
+protocol bgp <%= $name %> {
+  local <%= $local_addr %> as <%= $local_as %>;
+  neighbor <%= $neighbour_is_range ? { true => 'range ', false => '' } %> <%= $neighbour_addr %> as <%= $neighbour_as %>;
+  <% if $kind { %>
+    <%= $kind %>;
+  <% } %>
+  <% if $interface { %>
+    interface "<%= $interface %>";
+  <% } %>
+  <% if $ipv4 { %>
+    ipv4 {
+      import <%= $ipv4['import'] %>;
+      export <%= $ipv4['export'] %>;
+      <% if $ipv4['table'] { %>
+        table <%= $ipv4['table'] %>;
+      <% } %>
+    };
+  <% } %>
+  <% if $ipv6 { %>
+    ipv4 {
+      import <%= $ipv6['import'] %>;
+      export <%= $ipv6['export'] %>;
+      <% if $ipv6['table'] { %>
+        table <%= $ipv6['table'] %>;
+      <% } %>
+    };
+  <% } %>
+}
