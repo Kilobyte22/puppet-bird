@@ -17,7 +17,7 @@ protocol bgp <%= $name %> {
     };
   <% } %>
   <% if $ipv6 { %>
-    ipv4 {
+    ipv6 {
       import <%= $ipv6['import'] %>;
       export <%= $ipv6['export'] %>;
       <% if $ipv6['table'] { %>
