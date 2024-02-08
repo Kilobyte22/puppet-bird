@@ -11,7 +11,7 @@
 protocol kernel {
   <%= $protocol %> {
     export <%= $export %>;
-    import <%= $export %>;
+    import <%= $import %>;
     table <%= $table %>;
   };
 
